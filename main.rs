@@ -9,22 +9,28 @@ fn main() {
 
     let split = contents.split("\n");
     let mut first = true;
-    let mut prev:u8 = 0;
+    let mut prev:u32 = 0;
+    let mut is_larger:u32 = 0;
     for s in split {
-        println!("number: {}",s);
-        let f: u8 = s.trim().parse().expect("Wanted a number");
+        if s.is_empty()
+        {
+            break;
+        }
+        let f: u32 = s.trim().parse().expect("Wanted a number");
         if first
         {
-            prev = f;
             first = false;
         }
         else if f < prev
         {
-            println!("s: decreased");
+            println!("{}: decreased", f);
         }
         else if f > prev
         {
-            println!("s: increased");
+            println!("{}: increased", f);
+            is_larger += 1;
         }
+        prev = f;
     }
+    println!("number of time depth increased: {}", is_larger);
 }
