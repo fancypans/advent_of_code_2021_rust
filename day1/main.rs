@@ -9,7 +9,7 @@ fn main() {
         .lines()
         .map(|x| x.parse::<u32>().unwrap_or_default())
         .collect();
-    //part1(&line);
+
     println!("part1: {:?}", part1(&line));
     println!("part2: {:?}", part2(&line));
 }
