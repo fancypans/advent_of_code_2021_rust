@@ -1,37 +1,26 @@
 use std::fs;
 
 fn main() {
-    // --snip--
     // let file_path = "test_input";
     let file_path = "puzzle_input";
 
-    let contents = fs::read_to_string(file_path)
-        .expect("Should have been able to read the file");
-
-    let split = contents.split("\n");
-    let mut first = true;
-    let mut prev:u32 = 0;
-    let mut is_larger:u32 = 0;
-    for s in split {
-        if s.is_empty()
-        {
-            break;
-        }
-        let f: u32 = s.trim().parse().expect("Wanted a number");
-        if first
-        {
-            first = false;
-        }
-        else if f < prev
-        {
-            println!("{}: decreased", f);
-        }
-        else if f > prev
-        {
-            println!("{}: increased", f);
-            is_larger += 1;
-        }
-        prev = f;
-    }
-    println!("number of time depth increased: {}", is_larger);
+    let binding = fs::read_to_string(file_path).unwrap_or_default(); //why we need a let binding here?
+    let line: Vec<u32> = binding
+        .lines()
+        .map(|x| x.parse::<u32>().unwrap_or_default())
+        .collect();
+    //part1(&line);
+    println!("part1: {:?}", part1(&line));
+    println!("part2: {:?}", part2(&line));
+}
+fn part1(line: &Vec<u32>) -> usize {
+    return line.windows(2).filter(|x| x[0] < x[1]).count();
+}
+fn part2(line: &Vec<u32>) -> usize {
+    return part1(
+        &line
+            .windows(3)
+            .map(|x| x[0] + x[1] + x[2])
+            .collect::<Vec<u32>>(),
+    );
 }
