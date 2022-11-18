@@ -12,8 +12,7 @@
 
 # private leaderboard
 
-join private [leaderboard](https://adventofcode.com/2021/leaderboard/private) with code: 820960-35f051bd
-<https://adventofcode.com/2021>
+join private [leaderboard](https://adventofcode.com/2021/leaderboard/private/view/820960) with code: 820960-35f051bd
 
 
 <a id="org93f7e62"></a>
